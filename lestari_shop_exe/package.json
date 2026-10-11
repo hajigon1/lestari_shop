@@ -1,0 +1,34 @@
+{
+  "name": "lestari-shop-offline",
+  "version": "1.1.0",
+  "description": "Aplikasi offline servis HP, stok, kas, dan laporan Lestari Shop dengan SQLite lokal",
+  "main": "main.js",
+  "author": "Lestari Shop",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0"
+  },
+  "build": {
+    "appId": "id.lestarishop.offline",
+    "productName": "Lestari Shop Offline",
+    "asar": true,
+    "files": ["main.js", "preload.js", "lestari_shop_offline.html", "package.json"],
+    "directories": { "output": "dist" },
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "Lestari-Shop-Offline-Setup-${version}.${ext}"
+    }
+  }
+}
